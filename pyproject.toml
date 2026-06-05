@@ -1,0 +1,48 @@
+[project]
+name = "shipstation-mcp-server"
+version = "1.0.0"
+description = "MCP server for ShipStation — HTTP/SSE transport, OAuth 2.0, Docker-ready"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "mcp>=1.12.1",
+    "fastmcp>=2.10.6",
+    "shipstation @ git+https://github.com/First-Vibes-LLC/shipstation-lib.git",
+    "python-dotenv>=1.1.1",
+    "requests>=2.32.4",
+    "fastapi>=0.104.0",
+    "uvicorn>=0.30.0",
+    "sse-starlette>=1.8.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/First-Vibes-LLC/shipstation-mcp"
+Repository = "https://github.com/First-Vibes-LLC/shipstation-mcp"
+"Bug Tracker" = "https://github.com/First-Vibes-LLC/shipstation-mcp/issues"
+
+[project.scripts]
+shipstation-mcp = "shipstation_mcp_server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 79
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "C4", "UP"]
+ignore = ["E501", "B008"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
